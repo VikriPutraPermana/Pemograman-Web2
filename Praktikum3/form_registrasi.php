@@ -1,4 +1,6 @@
-<?php require_once "proses_registrasi.php"; ?>
+<?php require_once "proses_registrasi.php"; 
+// Vikri Putra Permana | TI14 | 0110222070
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +11,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<div class="bg-primary text-white">
 <body>
-    <div class="container">
+    <div class="container">  
         <h2>From Registrasi IT Club GDSD</h2>
+        <hr>
             <form method="post">
             <div class="form-group row">
                 <label for="nim" class="col-4 col-form-label">NIM</label> 
@@ -77,10 +81,11 @@
             </div> 
             <div class="form-group row">
                 <div class="offset-4 col-8">
-                <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                <button name="submit" type="submit" class="btn btn-success">Submit</button>
                 </div>
             </div>
         </form>
+        <hr>
             <table class="table table-bordered">
                 <tr class="table-primary text-uppercase">
                     <th>nim</th>
@@ -90,6 +95,8 @@
                     <th>domisili</th>
                     <th>program_studi</th>
                     <th>skill Programming</th>
+                    <th>skor skill</th>
+                    <th>kategori skill</th>
                 </tr>
                 <?php
                 if(isset($_POST['submit'])){
@@ -100,7 +107,35 @@
                     $domisili = $_POST['domisili'];
                     $program_studi = $_POST['program_studi'];
                     $skill_user = $_POST['skill'];
+                    $skor = 0;
+                        foreach ($skill_user as $skill){
+                            switch ($skill){
+                                case 'HTML' :
+                                    $skor += 10;
+                                    break;
+                                case 'CSS' :
+                                    $skor += 10;
+                                    break;
+                                case 'JavaScrip' :
+                                    $skor += 20;
+                                    break;
+                                case 'RWD Boostrap' :
+                                    $skor += 20;
+                                    break;
+                                case 'PHP' :
+                                    $skor += 30;
+                                    break;
+                                case 'Python' :
+                                    $skor += 30;
+                                    break;
+                                case 'Java' :
+                                    $skor += 50;
+                                    break;
+                            };
+                        };
+                    $kategori_skill = Skor($skor);
                 ?>
+                
                 <tr>
                     <td><?= $nim; ?></td>
                     <td><?= $nama; ?></td>
@@ -110,11 +145,14 @@
                     <td><?= $program_studi; ?></td>
                     <td>
                         <?php foreach($skill_user as $skill){
-                        echo $skill;} ?>
+                        echo $skill; ",";} ?>
                     </td>
+                    <td><?= $skor; ?></td>
+                    <td><?= $kategori_skill; ?></td>
                 </tr>
                 <?php } ?>
-            </table>
+            </table>       
     </div>
 </body>
+</div>
 </html>
