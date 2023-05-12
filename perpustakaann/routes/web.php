@@ -28,3 +28,7 @@ Route::get('/kabar', function () {
 Route::get('/nilai', function () {
     return view('nilai');
 });
+
+Route::get('/tes', function () {
+    return view('kesehatan');
+});
