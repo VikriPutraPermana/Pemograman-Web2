@@ -18,15 +18,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"href="index.html" >
+          <a class="nav-link" href={{ url('dashboard')}} >
             <span class="menu-title">Dashboard</span>
             <i class="mdi mdi-home menu-icon"></i>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="pages/icons/mdi.html">
-            <span class="menu-title">Icons</span>
+          <a class="nav-link" href={{ url('buku')}}>
+            <span class="menu-title">Buku</span>
             <i class="mdi mdi-contacts menu-icon"></i>
           </a>
         </li>

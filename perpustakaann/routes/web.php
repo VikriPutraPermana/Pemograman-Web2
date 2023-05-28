@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\RegistrasiAnggotaController;
 use App\http\Controllers\PeminjamanBukuController;
 use App\http\Controllers\DashboardController;
-
+use App\http\Controllers\BukuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,3 +45,8 @@ Route::post('/hasil-pinjam', [PeminjamanBukuController::class, 'hasil']);
 
 //praktikum 10
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/buku', [BukuController::class, 'index']);
+
+//Route untuk menampilkan form tambah pasien
+Route ::get('create', [BukuController::class, 'create']);
