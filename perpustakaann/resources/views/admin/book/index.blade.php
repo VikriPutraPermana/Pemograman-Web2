@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 @section('content')
-
+<div class="content-wrapper">
 <div class="container card shadow">
     <h1>Daftar Buku</h1>
     <br>
@@ -23,15 +23,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Rembulan</td>
-                <td>10</td>
-                <td><a class="btn btn-primary" href="">View</a>
-                    <a class="btn btn-primary" href="">Edit</a>
-                    <a class="btn btn-primary" href="">Delete</a></td>
-            </tr>
+            @foreach ($books as $book)
+                <tr>
+                    <td> {{ $loop->iteration }} </td>
+                    <td> {{ $book->title}} </td>
+                    <td> {{ $book->stok}} </td>
+                    <td>
+                        <a href="" class="btn btn-primary" >View</a>
+                        <a href="" class="btn btn-primary" >Edit</a>
+                        <a href="" class="btn btn-primary" >Delete</a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
     </div>
+</div>
 @endsection

@@ -5,6 +5,8 @@ use App\http\Controllers\RegistrasiAnggotaController;
 use App\http\Controllers\PeminjamanBukuController;
 use App\http\Controllers\DashboardController;
 use App\http\Controllers\BukuController;
+use App\http\Controllers\BookController;
+use App\http\Controllers\MemberController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,5 +50,7 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/buku', [BukuController::class, 'index']);
 
-//Route untuk menampilkan form tambah pasien
-Route ::get('create', [BukuController::class, 'create']);
+//Praktikum 11
+Route::get('dashboard/book', [BookController::class, 'index']);
+
+Route::get('dashboard/member', [MemberController::class, 'index']);
