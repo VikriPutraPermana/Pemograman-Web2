@@ -4,7 +4,7 @@
 <div class="container card shadow">
     <h1>Daftar Buku</h1>
     <br>
-    <a href="/admin/create" class="btn btn-primary">+ Tambah Buku</a>
+    <a href="{{ url("/dashboard/book/create") }}" class="btn btn-primary">+ Tambah Buku</a>
     <hr>
 
     @if (session('success'))
@@ -29,9 +29,13 @@
                     <td> {{ $book->title}} </td>
                     <td> {{ $book->stok}} </td>
                     <td>
-                        <a href="" class="btn btn-primary" >View</a>
-                        <a href="" class="btn btn-primary" >Edit</a>
-                        <a href="" class="btn btn-primary" >Delete</a>
+                        <a href="" class="btn btn-primary btn-sm" >View</a>
+                        <a href="" class="btn btn-warning btn-sm" >Edit</a>
+                        <form action="{{ url('/dashboard/book/destroy', $book->id) }}" method="post" class="d-inline">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
