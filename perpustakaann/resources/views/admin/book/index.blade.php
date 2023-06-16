@@ -12,7 +12,7 @@
             {{ session('success') }}
         </div>
     @endif
-
+     <h4 class="card"> </h4>   
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -29,8 +29,8 @@
                     <td> {{ $book->title}} </td>
                     <td> {{ $book->stok}} </td>
                     <td>
-                        <a href="" class="btn btn-primary btn-sm" >View</a>
-                        <a href="" class="btn btn-warning btn-sm" >Edit</a>
+                        <a href="{{ url('/dashboard/book/show', $book->id) }}" class="btn btn-primary btn-sm" >View</a>
+                        <a href="{{ url('/dashboard/book/edit', $book->id) }}" class="btn btn-warning btn-sm" >Edit</a>
                         <form action="{{ url('/dashboard/book/destroy', $book->id) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')
