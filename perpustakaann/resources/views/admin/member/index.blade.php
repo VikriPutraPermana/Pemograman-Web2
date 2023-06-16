@@ -35,8 +35,8 @@
                     <td> {{ $member->status}} </td>
                     <td> {{ $member->address}} </td>
                     <td>
-                        <a href="" class="btn btn-primary btn-sm" >View</a>
-                        <a href="" class="btn btn-warning btn-sm" >Edit</a>
+                        <a href="{{ url('/dashboard/member/show', $member->id) }}" class="btn btn-primary btn-sm" >View</a>
+                        <a href="{{ url('/dashboard/member/edit', $member->id) }}" class="btn btn-warning btn-sm" >Edit</a>
                         <form action="{{ url('/dashboard/member/destroy', $member->id) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')

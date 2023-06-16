@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-//Import model Book
+//Import model Member
 use App\Models\Member;
 
 class MemberController extends Controller
@@ -53,7 +53,11 @@ class MemberController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Mendapatkan data berdasarkan ID
+        $member = Member::find($id);
+        return view("admin.member.show", [
+            'member' => $member
+        ]);
     }
 
     /**
@@ -61,7 +65,11 @@ class MemberController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Mendapatkan data berdasarkan ID
+        $member = Member::find($id);
+        return view("admin.member.edit", [
+            'member' => $member
+        ]);
     }
 
     /**
@@ -69,7 +77,28 @@ class MemberController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+         // Mendapatkan data berdasarkan ID
+         $member = Member::find($id);
+
+         // Validasi form input
+        $validated = $request->validate([
+            'name' => 'required|min:5|max:24',
+            'email' => 'required',
+            'gender' => 'required|in:Pria,Wanita',
+            'status' => 'required',
+            'address' => 'required',
+    
+            ]);
+
+        //Update Data
+        $member->name = $request->input('name');
+        $member->email = $request->input('email');
+        $member->gender = $request->input('gender');
+        $member->status = $request->input('status');
+        $member->address = $request->input('address');
+        $member->save();
+
+        return redirect('/dashboard/member')->with('success', 'Data Berhasil di Update');
     }
 
     /**

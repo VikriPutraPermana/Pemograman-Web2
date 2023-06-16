@@ -17,7 +17,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <h3>Tambah Buku</h3><br />
+            <h3>Tambah Anggota</h3><br />
             {{-- menampilkan error validasi --}}
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
@@ -29,20 +29,21 @@
                 </div>
             @endif
             <!-- form validasi -->
-            <form class="forms-sample" action="{{ url('/dashboard/member/store') }}" method="POST">
+            <form class="forms-sample" action="{{ url('/dashboard/member/update', $member->id) }}" method="POST">
                 @csrf
+                @method('put')
                 <div class="form-group row">
-                    <label for="title" class="col-sm-4 col-form-label">Nama</label>
+                    <label for="title" class="col-sm-4 col-form-label">Name</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="name" name="name"
-                            placeholder="name">
+                            placeholder="name" value="{{$member->name}}">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="title" class="col-sm-4 col-form-label">Email</label>
+                    <label for="isbn" class="col-sm-4 col-form-label">email</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="email" name="email"
-                            placeholder="email">
+                            placeholder="email" value="{{$member->email}}">
                     </div>
                 </div>
                 <div class="form-group row">
