@@ -46,9 +46,9 @@ Route::get('/form-peminjaman-buku', [PeminjamanBukuController::class, 'index']);
 Route::post('/hasil-pinjam', [PeminjamanBukuController::class, 'hasil']);
 
 //praktikum 10
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::get('/buku', [BukuController::class, 'index']);
+//Route::get('/buku', [BukuController::class, 'index']);
 
 //Praktikum 11
 Route::get('dashboard/book', [BookController::class, 'index']);
@@ -72,3 +72,9 @@ Route::get('dashboard/book/show/{id}', [BookController::class, 'show']);
 Route::get('dashboard/member/edit/{id}', [MemberController::class, 'edit']);
 Route::put('dashboard/member/update/{id}', [MemberController::class, 'update']);
 Route::get('dashboard/member/show/{id}', [MemberController::class, 'show']);
+
+
+//Praktikum 14 (membuat login)
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

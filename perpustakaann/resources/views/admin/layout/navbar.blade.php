@@ -48,6 +48,31 @@
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+                <a class="nav-link dropdown-toggle" id="profileDropdown" href="#"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="nav-profile-img">
+                        <img src="{{ asset('admin/assets/images/faces/face1.jpg') }}" alt="image">
+                        <span class="availability-status online"></span>
+                    </div>
+                    <div class="nav-profile-text">
+                        <p class="mb-1 text-black">{{ Auth::user()->name }}</p>
+                    </div>
+                </a>
+                <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                         <i class="mdi mdi-logout me-2 text-primary"></i>
+                         {{ __('Logout') }}
+                    </a>
 
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                         @csrf
+                     </form>
+                </div>
+            </li>
+           </ul>
         </div>
       </nav>
